@@ -1,0 +1,4 @@
+interface:
+  display_name: "Learning Repo Builder"
+  short_description: "Builds learning repos from curated sources"
+  default_prompt: "Use $learning-repo-builder to create a learning repo on ads recsys."
