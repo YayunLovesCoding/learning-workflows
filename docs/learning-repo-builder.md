@@ -49,3 +49,21 @@ Create 2–4 notes that connect concepts across companies/stages (e.g., retrieva
 ## NotebookLM Bundle
 Concatenate all summaries into `exports/notebooklm_bundle.md`, grouped by stage.
 
+
+## How to run (Codex)
+
+Example (guided mode):
+```
+Use $learning-repo-builder to create a learning repo on ads recommender systems.
+```
+
+Example (advanced mode):
+```
+Use $learning-repo-builder with:
+- topic: organic recommender systems
+- time_window_years: 2
+- companies: YouTube, Netflix, Pinterest, TikTok
+- focus: retrieval, ranking, engagement, evaluation, serving
+- output_path: personal/recsys-organic-learning
+```
+
