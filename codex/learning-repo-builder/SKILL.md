@@ -46,7 +46,7 @@ exports/
 - Add foundational papers even if outside the window.
 - Store all sources in `sources/corpus.csv` with fields:
   `company,source_type,title,url,date,domain,stage,key_contribution,key_metrics,methods,tradeoffs,notes`
-- Verify dates/URLs from sources; cite them.
+- Verify dates/URLs from sources and preserve traceability in the source table.
 
 ### 3) Generate summaries
 - One Markdown file per source in `summaries/`.
@@ -59,7 +59,9 @@ exports/
   - Methods / Architecture Notes
   - Tradeoffs / Constraints
   - Why It Matters
-- Use citations for non‑obvious facts, metrics, and claims.
+- Use citations while researching non-obvious facts, metrics, and claims, but persist only repo-safe attribution in files written to disk.
+- Never write raw tool citation markers into repo files. Forbidden examples: `citeturn0view0`, `cite...`, `turn0search0`, `turn4view1`.
+- Repo-safe attribution should use the existing `Source`, `URL`, and `Date` fields, plus optional Markdown footnotes or a short `Sources` section when extra attribution is needed.
 
 ### 4) Write syntheses
 Create 2–4 synthesis notes that connect sources across stages or themes, in `syntheses/`.
@@ -68,10 +70,16 @@ Examples: retrieval vs ranking, infra tradeoffs, foundation models, experimentat
 ### 5) NotebookLM bundle
 Concatenate summaries into `exports/notebooklm_bundle.md`, grouped by stage.
 
+### 6) Sanitize outputs
+- Before finishing, scan `README.md`, `summaries/`, `syntheses/`, and `exports/` for leaked raw citation markers such as `cite`, `turn`, or `turn0search`.
+- Remove or replace leaked markers before saving files. Final repo artifacts must read cleanly as plain Markdown outside the chat tool.
+- If attribution is still needed after cleanup, convert it to repo-safe text such as footnotes, normal Markdown links, or a `Sources` section.
+
 ## Notes
 - Prioritize accuracy and source verification over speed.
 - Do not fabricate metrics or claims.
 - If a source is paywalled or inaccessible, note it in `notes` and move on.
+- Use tool-native citations only during research and reasoning, not in repo files committed to disk.
 
 ## Presets
 Use `references/presets.md` for guided mode defaults and focus lists.

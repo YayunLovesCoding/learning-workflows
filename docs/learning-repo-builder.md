@@ -42,12 +42,18 @@ exports/
 - Methods / Architecture Notes
 - Tradeoffs / Constraints
 - Why It Matters
+- Keep repo files tool-agnostic: never write raw assistant citation markers such as `citeturn0view0` or `turn0search0` into Markdown.
+- Preserve attribution with normal Markdown only: the `Source`/`URL`/`Date` header, optional footnotes, or a short `Sources` section.
 
 ## Synthesis Notes
 Create 2–4 notes that connect concepts across companies/stages (e.g., retrieval vs ranking; infra tradeoffs; foundation models).
 
 ## NotebookLM Bundle
 Concatenate all summaries into `exports/notebooklm_bundle.md`, grouped by stage.
+
+## Output Hygiene
+- Before finishing, scan `README.md`, `summaries/`, `syntheses/`, and `exports/` for leaked tool-specific citation tokens like `cite`, `turn`, and `turn0search`.
+- Remove or convert any leaked markers before saving files so the repo stays readable outside the chat tool.
 
 
 ## How to run (Codex)
@@ -66,4 +72,3 @@ Use $learning-repo-builder with:
 - focus: retrieval, ranking, engagement, evaluation, serving
 - output_path: personal/recsys-organic-learning
 ```
-
